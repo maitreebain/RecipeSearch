@@ -21,6 +21,7 @@
 		8082E4B623A0070800D3EEB2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E4B523A0070800D3EEB2 /* Secrets.swift */; };
 		8082E4B823A011F300D3EEB2 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E4B723A011F300D3EEB2 /* Recipe.swift */; };
 		8082E4BA23A012B700D3EEB2 /* RecipeSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8082E4B923A012B700D3EEB2 /* RecipeSearchAPI.swift */; };
+		80C3710F23A299C300E8F7D9 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C3710E23A299C300E8F7D9 /* RecipeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		8082E4B523A0070800D3EEB2 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		8082E4B723A011F300D3EEB2 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		8082E4B923A012B700D3EEB2 /* RecipeSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchAPI.swift; sourceTree = "<group>"; };
+		80C3710E23A299C300E8F7D9 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 		57E986A3239F3B18002C7C7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				80C3710E23A299C300E8F7D9 /* RecipeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				8082E4B623A0070800D3EEB2 /* Secrets.swift in Sources */,
 				57E9867B239F3A8D002C7C7B /* RecipeSearchController.swift in Sources */,
 				57E9869E239F3AC5002C7C7B /* AppError.swift in Sources */,
+				80C3710F23A299C300E8F7D9 /* RecipeCell.swift in Sources */,
 				57E98677239F3A8D002C7C7B /* AppDelegate.swift in Sources */,
 				57E98679239F3A8D002C7C7B /* SceneDelegate.swift in Sources */,
 				8082E4BA23A012B700D3EEB2 /* RecipeSearchAPI.swift in Sources */,

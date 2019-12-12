@@ -12,6 +12,8 @@ class RecipeSearchController: UIViewController {
   
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var recipe = [Recipe]() {
         didSet {
         DispatchQueue.main.async {
@@ -31,12 +33,16 @@ class RecipeSearchController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        loadData()
+        searchBar.delegate = self
+        searchRecipes(searchQuery: "pho")
+        
+        //set navigation bar title
+        navigationItem.title = "Recipe Search"
     }
     
     
-    func loadData() {
-        RecipeSearchAPI.fetchRecipe(for: "sushi") { [weak self] (result) in
+    func searchRecipes(searchQuery: String) {
+        RecipeSearchAPI.fetchRecipe(for: searchQuery) { [weak self] (result) in
             
             switch result{
             case .failure(let appError):
@@ -54,7 +60,7 @@ class RecipeSearchController: UIViewController {
 extension RecipeSearchController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 220
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,13 +68,32 @@ extension RecipeSearchController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as? RecipeCell else {
+            fatalError("no cell conformation")
+        }
         
         let selectedRecipe = recipe[indexPath.row]
         
-        cell.textLabel?.text = selectedRecipe.label
+        cell.configureCell(for: selectedRecipe)
         
         return cell
         
+    }
+}
+
+extension RecipeSearchController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //we will use a guard let to unwrap the searchBar.text property
+        // because it's an optional
+        
+        //dismiss keyboard when the user clicks on the search button
+        searchBar.resignFirstResponder()
+        
+        guard let searchText = searchBar.text else {
+            print("missing search text")
+            return
+        }
+        
+        searchRecipes(searchQuery: searchText)
     }
 }
